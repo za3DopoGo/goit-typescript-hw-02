@@ -1,5 +1,12 @@
+import { FC } from "react";
+import { RequiredFields } from "../../types";
 import css from "./ImageCard.module.css";
-const ImageCard = ({ image, openModal }) => {
+
+interface ImageCardProps {
+  image: RequiredFields;
+  openModal: (id: string) => void;
+}
+const ImageCard: FC<ImageCardProps> = ({ image, openModal }) => {
   return (
     <div className={css.imgContainer}>
       <img

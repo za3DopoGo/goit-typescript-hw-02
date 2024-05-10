@@ -1,10 +1,16 @@
+import { FC } from "react";
 import ImageCard from "../ImageCard/ImageCard";
 import css from "./ImageGallery.module.css";
+import { RequiredFields } from "../../types";
 
-const ImageGallery = ({ images, openModal }) => {
+interface ImageGalleryProps {
+  images: RequiredFields[];
+  openModal: (id: string) => void;
+}
+const ImageGallery: FC<ImageGalleryProps> = ({ images, openModal }) => {
   return (
     <ul className={css.imagesList}>
-      {Array.isArray(images) &&
+      {images.length > 0 &&
         images.map((image) => {
           return (
             <li className={css.imageItem} key={image.id}>

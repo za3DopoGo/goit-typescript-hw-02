@@ -1,8 +1,24 @@
+import { FormEvent } from "react";
 import css from "./SearchBar.module.css";
-const SearchBar = ({ onSetSearchQuery, toast }) => {
-  const onSubmit = (e) => {
+
+interface SearchBarProps {
+  onSetSearchQuery: (searchTerm: string) => void;
+  toast: (
+    message: string,
+    options?: {
+      icon: string;
+      style: {
+        borderRadius: string;
+        background: string;
+        color: string;
+      };
+    }
+  ) => void;
+}
+const SearchBar: React.FC<SearchBarProps> = ({ onSetSearchQuery, toast }) => {
+  const onSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const value = e.target.search.value;
+    const value: string = (e.target as HTMLFormElement).search.value;
     if (value.trim() === "") {
       toast("Please enter text to search for images!", {
         icon: "✍🏻",
@@ -16,7 +32,7 @@ const SearchBar = ({ onSetSearchQuery, toast }) => {
       return;
     }
     onSetSearchQuery(value.trim());
-    e.target.reset();
+    e.currentTarget.reset();
   };
   return (
     <header className={css.header}>
@@ -29,7 +45,7 @@ const SearchBar = ({ onSetSearchQuery, toast }) => {
           autoFocus
           placeholder="Search images and photos"
         />
-        <button className={css.searchBtn} title="Press for search" type="submit">
+        <button className={css.searchBtn} title="Pres for search" type="submit">
           🔎
         </button>
       </form>

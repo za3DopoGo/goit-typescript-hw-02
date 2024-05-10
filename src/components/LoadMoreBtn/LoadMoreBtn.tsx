@@ -1,5 +1,12 @@
+import { FC } from "react";
+import { RequiredFields } from "../../types";
 import css from "./LoadMoreBtn.module.css";
-const LoadMoreBtn = ({ loadMore, images }) => {
+
+interface LoadMoreBtnProps {
+  loadMore: () => void;
+  images: RequiredFields[];
+}
+const LoadMoreBtn: FC<LoadMoreBtnProps> = ({ loadMore, images }) => {
   return (
     <div className={css.btnContainer}>
       {images.length > 0 && (
