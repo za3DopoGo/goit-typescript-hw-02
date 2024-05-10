@@ -1,0 +1,16 @@
+.imgContsiner {
+  max-width: 700px;
+  max-height: 700px;
+  overflow: hidden;
+}
+.mogalImg {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+}
+.descrContainer {
+  text-align: center;
+  padding: 10px;
+  max-width: 700px;
+}
